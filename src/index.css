@@ -11,3 +11,77 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  margin: 0;
+}
+
+/* Grid for the overall app */
+
+.main-head {
+  grid-area: header;
+  border-bottom: 1px grey solid;
+}
+
+.content {
+  padding: 2em;
+  grid-area: content;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.wrapper {
+  font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "sidebar"
+    "content";
+}
+
+@media (min-width: 500px) {
+  .wrapper {
+    grid-template-columns: 200px 1fr;
+    grid-template-areas:
+    "header  header"
+    "sidebar content"
+  }
+  .content {
+    border-left: 1px grey solid;
+  }
+}
+
+/* Header layout */
+.main-head {
+  display: flex;
+  align-items: center;
+}
+
+.main-head > * {
+  padding: 5px 10px;
+}
+
+form {
+  flex-grow: 1;
+  display: flex;
+}
+
+input {
+  flex-grow: 1;
+}
+
+/* Sidebar styling */
+ul.nav {
+  list-style-type: none;
+  padding-left: 5px;
+}
+
+ul.nav li {
+  padding: 15px;
+}
+
+ul.nav li.selected {
+  background-color: lightgray;
+}
