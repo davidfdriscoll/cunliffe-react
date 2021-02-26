@@ -12,19 +12,13 @@ code {
     monospace;
 }
 
-body {
-  margin: 0;
-}
-
 /* Grid for the overall app */
 
 .main-head {
   grid-area: header;
-  border-bottom: 1px grey solid;
 }
 
 .content {
-  padding: 2em;
   grid-area: content;
 }
 
@@ -73,15 +67,6 @@ input {
 }
 
 /* Sidebar styling */
-ul.nav {
-  list-style-type: none;
-  padding-left: 5px;
-}
-
-ul.nav li {
-  padding: 15px;
-}
-
 ul.nav li.selected {
   background-color: lightgray;
 }
