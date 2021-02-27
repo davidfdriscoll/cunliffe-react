@@ -1,18 +1,16 @@
+import React from 'react';
+import Container from '@material-ui/core/Container';
 import DefinitionDisplay from "./components/DefinitionDisplay";
 import SearchBar from "./components/SearchBar";
-import HeadwordTable from "./components/HeadwordTable";
+import HeadwordList from "./components/HeadwordList";
 
 function App() {
   return (
-    <div className="wrapper">
+    <Container>
       <SearchBar />
-      <article className='content'>
-        <DefinitionDisplay />
-      </article>
-      <aside className="sidebar">
-        <HeadwordTable />
-      </aside>
-    </div>
+      <HeadwordList />
+      <DefinitionDisplay />
+    </Container>
   );
 }
 

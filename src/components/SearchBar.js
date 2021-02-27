@@ -1,17 +1,16 @@
 import React from "react";
+import Box from "@material-ui/core/Box";
+import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 
 export default function SearchBar() {
     return (
-        <header className="main-head">
-            <img alt="" src="apotheosis_homer_small.jpeg" />
-            <div id="author-title">
-                <h3 id="author">R.J. Cunliffe</h3>
-                <h2 id="title">A Lexicon of the Homeric Dialect</h2>
-            </div>
-            <form>
-                <input type="text" name="item" id="item" />
-                <button>Search</button>
-            </form>
-        </header>
+        <Box>
+            <Box>
+                <Typography variant="h5">R.J. Cunliffe</Typography>
+                <Typography variant="h4">A Lexicon of the Homeric Dialect</Typography>
+            </Box>
+            <TextField variant="outlined"></TextField>
+        </Box>
     );
   }
