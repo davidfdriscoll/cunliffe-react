@@ -1,12 +1,12 @@
 import React from "react";
-import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
 export default function DefinitionDisplay() {
     return (
-        <Box>
+        <Paper>
             <Typography variant="body1">TYPOGRAPHY DEFINITION</Typography>
-        </Box>
+        </Paper>
 
     );
   }
