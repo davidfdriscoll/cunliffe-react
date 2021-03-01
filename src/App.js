@@ -1,18 +1,25 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 import DefinitionDisplay from "./components/DefinitionDisplay";
 import SearchBar from "./components/SearchBar";
 
+const useStyles = makeStyles((theme) => ({
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+}));
+
 function App() {
+  const classes = useStyles();
   return (
-    <Grid container spacing={1} justify="center">
-      <Grid item xs={12} lg={8}>
+    <Container maxWidth="md">
         <SearchBar />
-      </Grid>
-      <Grid item xs={12} lg={8}>
-        <DefinitionDisplay />
-      </Grid>      
-    </Grid>
+        <Container className={classes.container}>
+          <DefinitionDisplay />
+        </Container>
+    </Container>
   );
 }
 
