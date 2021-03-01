@@ -8,20 +8,20 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
-    container: {
-      margin: theme.spacing(0),
-      padding: theme.spacing(1),
-      [theme.breakpoints.up('md')]: {
-        padding: theme.spacing(3),
-        margin: theme.spacing(3),
-      }
-    },
-  }));
+  paper: {
+    margin: theme.spacing(0),
+    padding: theme.spacing(1),
+    [theme.breakpoints.up('sm')]: {
+      padding: theme.spacing(2),
+      margin: theme.spacing(2),
+    }
+  },
+}));
 
 export default function DefinitionDisplay() {
   const classes = useStyles();
   return (
-    <Paper className={classes.container}>
+    <Paper className={classes.paper}>
       <Typography variant="h6">κομίζω</Typography>
       <Typography variant="subtitle1"> [κομέω]</Typography>
       <List dense={true}>
