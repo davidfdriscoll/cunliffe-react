@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography"
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -55,13 +54,14 @@ const cunliffe10Words = [
   { headword: 'ἀγαπάω' }
 ];
 
-function handleSubmit(e) {
-  e.preventDefault();
-  alert("Hello world!");
-}
-
-export default function SearchBar() {
+export default function SearchBar(props) {
   const classes = useStyles();
+
+  function handleSubmit(e, newHeadword) {
+    e.preventDefault();
+    props.onHeadword(newHeadword);
+  }
+
   return (
     <AppBar position="sticky">
       <Toolbar>
@@ -74,7 +74,9 @@ export default function SearchBar() {
             id="combo-box"
             options={cunliffe10Words}
             getOptionLabel={(option) => option.headword}
-            onChange={handleSubmit}
+            onChange={(e,newHeadword) => {
+              handleSubmit(e, newHeadword);
+            }}
             renderInput={(params) => (
               <InputBase
                 ref={params.InputProps.ref}
