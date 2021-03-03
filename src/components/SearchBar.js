@@ -5,6 +5,8 @@ import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -39,6 +41,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const cunliffe10Words = [
+  { headword: 'ἀγακλυτός' },
+  { headword: 'ἀγάλλω' },
+  { headword: 'ἄγαλμα' },
+  { headword: '†ἄγαμαι' },
+  { headword: 'ἄγαμος' },
+  { headword: 'ἀγάννιφος' },
+  { headword: 'ἀγανός' },
+  { headword: 'ἀγανοφροσύνη' },
+  { headword: 'ἀγανόφρων' },
+  { headword: 'ἀγαπάζω' },
+  { headword: 'ἀγαπάω' }
+];
+
+function handleSubmit(e) {
+  e.preventDefault();
+  alert("Hello world!");
+}
+
 export default function SearchBar() {
   const classes = useStyles();
   return (
@@ -49,11 +70,22 @@ export default function SearchBar() {
           <div className={classes.searchIcon}>
             <SearchIcon />
           </div>
-          <InputBase 
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
+          <Autocomplete
+            id="combo-box"
+            options={cunliffe10Words}
+            getOptionLabel={(option) => option.headword}
+            onChange={handleSubmit}
+            renderInput={(params) => (
+              <InputBase
+                ref={params.InputProps.ref}
+                inputProps={params.inputProps}
+                autoFocus
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+              />
+            )}
           />
         </div>
       </Toolbar>
