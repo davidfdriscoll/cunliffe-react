@@ -1,21 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import DefinitionDisplay from "./components/DefinitionDisplay";
 import SearchBar from "./components/SearchBar";
 
-function App() {
-  function onHeadword(newHeadword) {
-    alert(newHeadword.headword);
-    console.log(newHeadword);
-  }
+function App(props) {
+  const [currentWord, setCurrentWord] = useState(props.words[0]);
 
+  function onHeadword(newWord) {
+    setCurrentWord(newWord);
+  }
   return (
     <div>
       <CssBaseline />
-      <SearchBar onHeadword={onHeadword} /> 
+      <SearchBar words={props.words} onHeadword={onHeadword} /> 
       <Container disableGutters maxWidth="md">
-        <DefinitionDisplay />
+        <DefinitionDisplay word={currentWord} />
       </Container>
     </div>
   );

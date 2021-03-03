@@ -40,26 +40,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cunliffe10Words = [
-  { headword: 'ἀγακλυτός' },
-  { headword: 'ἀγάλλω' },
-  { headword: 'ἄγαλμα' },
-  { headword: '†ἄγαμαι' },
-  { headword: 'ἄγαμος' },
-  { headword: 'ἀγάννιφος' },
-  { headword: 'ἀγανός' },
-  { headword: 'ἀγανοφροσύνη' },
-  { headword: 'ἀγανόφρων' },
-  { headword: 'ἀγαπάζω' },
-  { headword: 'ἀγαπάω' }
-];
-
 export default function SearchBar(props) {
   const classes = useStyles();
 
-  function handleSubmit(e, newHeadword) {
+  function handleSubmit(e, newWord) {
     e.preventDefault();
-    props.onHeadword(newHeadword);
+    props.onHeadword(newWord);
   }
 
   return (
@@ -72,10 +58,10 @@ export default function SearchBar(props) {
           </div>
           <Autocomplete
             id="combo-box"
-            options={cunliffe10Words}
+            options={props.words}
             getOptionLabel={(option) => option.headword}
-            onChange={(e,newHeadword) => {
-              handleSubmit(e, newHeadword);
+            onChange={(e,newWord) => {
+              handleSubmit(e, newWord);
             }}
             renderInput={(params) => (
               <InputBase
