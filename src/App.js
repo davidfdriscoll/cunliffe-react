@@ -8,7 +8,7 @@ function App(props) {
   const [currentWord, setCurrentWord] = useState(props.words[0]);
 
   function onHeadword(newWord) {
-    setCurrentWord(newWord);
+    setCurrentWord(newHeadword);
   }
   return (
     <div>
