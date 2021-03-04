@@ -20,8 +20,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DefinitionDisplay(props) {
   const classes = useStyles();
-  console.log(props.word);
-  console.log(props.word.headword);
   return (
     <Paper className={classes.paper}>
       <Typography variant="h6">{props.word.headword}</Typography>
@@ -33,6 +31,5 @@ export default function DefinitionDisplay(props) {
         </ListItem>
       </List>
     </Paper>
-
   );
-  }
+}
