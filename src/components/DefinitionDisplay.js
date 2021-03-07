@@ -22,37 +22,34 @@ const useStyles = makeStyles((theme) => ({
 export default function DefinitionDisplay(props) {
   const classes = useStyles();
 
-  const EtymList = props.word.etym.map(etym => {
-    let etymId = nanoid();
-    return (<Typography key={etymId} variant="subtitle1">{etym}</Typography>);
-  });
-  const FormList = props.word.forms.map(form => {
-    let formId = nanoid();
-    return (<Typography key={formId} variant="body2">{form}</Typography>);
-  });
-  const DefList = props.word.defs.map(def => {
-    let defId1 = nanoid();
-    let defId2 = nanoid();
-    return (
-      <ListItem>
-        <ListItemText 
-          key={defId1} 
-          disableTypography
-          primary={<Typography key={defId2} variant="body1">{def}</Typography>} 
-        />      
-      </ListItem>
-    );
-  });
-  
   return (
     <Paper className={classes.paper}>
       <Typography variant="h6">{props.word.headword}</Typography>
-      {EtymList}
-      {FormList}
+
+      {/* Etymology */}
+      {props.word.etym.map(etym => (
+        <Typography key={nanoid()} variant="subtitle1">{etym}</Typography>
+      ))}
+
+      {/* Forms */}
+      {props.word.forms.map(form => (
+        <Typography key={nanoid()} variant="body2">{form}</Typography>
+      ))}
+
+      {/* Definitions */}
       <List dense={true}>
         <Divider />
-        {DefList}
+        {props.word.defs.map(def => (
+          <ListItem>
+            <ListItemText 
+              key={nanoid()} 
+              disableTypography
+              primary={<Typography key={nanoid()} variant="body1">{def}</Typography>} 
+            />      
+          </ListItem>
+        ))}
       </List>
+
     </Paper>
   );
 }
