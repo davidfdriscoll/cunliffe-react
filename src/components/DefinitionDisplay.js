@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DefinitionDisplay(props) {
   const classes = useStyles();
+
   const EtymList = props.word.etym.map(etym => {
     let etymId = nanoid();
     return (<Typography key={etymId} variant="subtitle1">{etym}</Typography>);
@@ -42,6 +43,7 @@ export default function DefinitionDisplay(props) {
       </ListItem>
     );
   });
+  
   return (
     <Paper className={classes.paper}>
       <Typography variant="h6">{props.word.headword}</Typography>

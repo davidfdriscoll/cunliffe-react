@@ -19,7 +19,12 @@ class App extends Component {
   }
 
   onHeadword(newWord) {
-    this.setState({ currentWord : newWord });
+    if(newWord) {
+      this.setState({ currentWord : newWord });
+    }
+    else {
+      this.setState({ currentWord : cunliffeLexicon[0] });
+    }
   }
 
   render() {
