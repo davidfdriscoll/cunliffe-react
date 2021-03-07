@@ -3,14 +3,15 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import DefinitionDisplay from "./components/DefinitionDisplay";
 import SearchBar from "./components/SearchBar";
+import cunliffeLexicon from "./cunliffe.json";
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      words: props.words,
-      currentWord: props.words[0]
+      words: cunliffeLexicon,
+      currentWord: cunliffeLexicon[0]
     }
 
     // https://reactjs.org/docs/handling-events.html

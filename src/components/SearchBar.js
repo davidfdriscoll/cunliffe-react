@@ -51,11 +51,15 @@ export default function SearchBar(props) {
   return (
     <AppBar position="sticky">
       <Toolbar>
+        
         <Typography variant="h6">Cunliffe</Typography>
+
         <div className={classes.search}>
+
           <div className={classes.searchIcon}>
             <SearchIcon />
           </div>
+
           <Autocomplete
             id="combo-box"
             options={props.words}
@@ -75,6 +79,7 @@ export default function SearchBar(props) {
               />
             )}
           />
+
         </div>
       </Toolbar>
     </AppBar>
