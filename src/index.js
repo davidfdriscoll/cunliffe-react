@@ -4,17 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const CUNLIFFE5WORDS = [
-  { headword: 'ἀγακλυτός', etym: '[ἀγα- + κλυτός.]', def: '= ἀγακλειτός' },
-  { headword: 'ἀγάλλω', etym: '', def: 'To exult' },
-  { headword: 'ἄγαλμα', etym: '', def: 'An ornament, a glory or delight' },
-  { headword: '†ἄγαμαι', etym: '', def: 'To wonder, marvel' },
-  { headword: 'ἄγαμος', etym: '[ἀ-1 + γάμος]', def: 'Unmarried' }
-];
-
 ReactDOM.render(
   <React.StrictMode>
-    <App words={CUNLIFFE5WORDS} />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

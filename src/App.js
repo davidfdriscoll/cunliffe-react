@@ -5,12 +5,13 @@ import DefinitionDisplay from "./components/DefinitionDisplay";
 import SearchBar from "./components/SearchBar";
 import cunliffeLexicon from "./cunliffe.json";
 
+const headwords = cunliffeLexicon.map(word => word.headword);
+
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      words: cunliffeLexicon,
       currentWord: cunliffeLexicon[0]
     }
 
@@ -18,8 +19,9 @@ class App extends Component {
     this.onHeadword = this.onHeadword.bind(this);
   }
 
-  onHeadword(newWord) {
-    if(newWord) {
+  onHeadword(newHeadword) {
+    if(newHeadword) {
+      let newWord = cunliffeLexicon.filter(newWords => newWords.headword === newHeadword)[0];
       this.setState({ currentWord : newWord });
     }
     else {
@@ -31,7 +33,7 @@ class App extends Component {
     return(
       <div>
         <CssBaseline />
-        <SearchBar words={this.state.words} onHeadword={this.onHeadword} /> 
+        <SearchBar words={headwords} onHeadword={this.onHeadword} /> 
         <Container disableGutters maxWidth="md">
           <DefinitionDisplay word={this.state.currentWord} />
         </Container>
