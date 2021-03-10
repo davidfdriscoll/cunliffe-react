@@ -133,6 +133,8 @@ const renderGroup = (params) => [
   params.children,
 ];
 
+// end virtualization magic
+
 export default function SearchBar(props) {
   const classes = useStyles();
 

@@ -10,6 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListSubHeader from '@material-ui/core/ListSubheader';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     backgroundColor: theme.palette.background.paper,
-    color: theme.palette.text.primary
+    color: theme.palette.text.primary,
   },
   listitem: {
     paddingTop: 0,
@@ -39,7 +40,7 @@ const fontWeightDict = new Map([
   ['quote', 'fontWeightRegular'],
   ['bibl', 'fontWeightLight'],
   ['term', 'fontWeightMedium'],
-  ['small_text', 'fontWeightMedium'],
+  ['small_text', 'fontWeightLight'],
 ]);
 
 const fontStyleDict = new Map([
@@ -63,17 +64,14 @@ const fontSizeDict = new Map([
 export default function DefinitionDisplay(props) {
   const classes = useStyles();
 
-  function renderText(textArray, variant, typoClass) {
-    if(!Array.isArray(textArray)) {
-      textArray = [textArray];
-    }
+  function renderText(textArrayObj, variant, typoClass) {
     return (
       <Typography 
         key={nanoid()} 
         variant={variant}
         className={typoClass}
       >
-        {textArray.map(textItem =>
+        {textArrayObj.textArray.map(textItem =>
           <Box 
             key={nanoid()} 
             display="inline"
@@ -93,13 +91,11 @@ export default function DefinitionDisplay(props) {
     let primaryText;
     let secondaryText = [];
     let avatar;
-    if(!Array.isArray(defArray[0]) && defArray[0].textType === 'headNumber') {
+    if(defArray[0].textType && defArray[0].textType === 'headNumber') {
       avatar = (
         <ListItemAvatar>
-          <Avatar className={classes.avatar}>
-            {defArray[0].text}
-          </Avatar>       
-        </ListItemAvatar>  
+          <ListItemText key={nanoid()} primary={defArray[0].text} />
+        </ListItemAvatar>
       );
       primaryText = renderText(defArray[1], "body1");
       firstNestedDef = 2;
@@ -113,7 +109,7 @@ export default function DefinitionDisplay(props) {
     const secondaryTextDiv = (<div>{secondaryText}</div>);
   
     return (
-      <ListItem className={classes.listitem}>
+      <ListItem dense className={classes.listitem}>
         {avatar}
         <ListItemText 
           key={nanoid()} 
