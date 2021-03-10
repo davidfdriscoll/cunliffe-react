@@ -8,9 +8,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
-import Avatar from '@material-ui/core/Avatar';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListSubHeader from '@material-ui/core/ListSubheader';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
