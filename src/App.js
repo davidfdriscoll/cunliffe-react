@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import DefinitionDisplay from "./components/DefinitionDisplay";
@@ -6,6 +7,16 @@ import SearchBar from "./components/SearchBar";
 import cunliffeLexicon from "./cunliffe.json";
 
 const headwords = cunliffeLexicon.map(word => word.headword);
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#bcbcbc',
+      dark: '#ffffff',
+      main: '#eeeeee',
+    }
+  }
+});
 
 class App extends Component {
 
@@ -31,13 +42,13 @@ class App extends Component {
 
   render() {
     return(
-      <div>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <SearchBar words={headwords} onHeadword={this.onHeadword} /> 
         <Container disableGutters maxWidth="md">
           <DefinitionDisplay word={this.state.currentWord} />
         </Container>
-      </div>
+      </ThemeProvider>
     );
   }
 }

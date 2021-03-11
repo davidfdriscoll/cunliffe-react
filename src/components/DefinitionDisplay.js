@@ -1,4 +1,5 @@
 import React from "react";
+import { nanoid } from "nanoid";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -19,12 +20,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DefinitionDisplay(props) {
   const classes = useStyles();
-
   return (
     <Paper className={classes.paper}>
       <Typography variant="h5">{props.word.headword}</Typography>
-      {props.word.etym.map(etym => <TextArray textArrayObj={etym} variant="body1" />)}
-      {props.word.forms.map(form => <TextArray textArrayObj={form} variant="body2" />)}
+      {props.word.etym.map(etym => <TextArray key={nanoid()} textArrayObj={etym} variant="body1" />)}
+      {props.word.forms.map(form => <TextArray key={nanoid()} textArrayObj={form} variant="body2" />)}
       <Divider />
       <Definition definitionObj={props.word.defs} />
     </Paper>

@@ -38,6 +38,7 @@ export default function TextArray(props) {
       key={nanoid()} 
       variant={props.variant}
       className={props.typoClass}
+      component={'span'} //to avoid error of <div> inside of Typography's default <p>, https://stackoverflow.com/questions/41928567/div-cannot-appear-as-a-descendant-of-p
     >
       {props.textArrayObj.data.map(textItem =>
         <Box 

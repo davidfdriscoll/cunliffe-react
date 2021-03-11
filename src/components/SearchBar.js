@@ -15,9 +15,9 @@ const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: fade(theme.palette.common.black, 0.15),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade(theme.palette.common.black, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: theme.spacing(3),
@@ -159,7 +159,6 @@ export default function SearchBar(props) {
             id="combo-box"
             options={props.words}
             disableListWrap
-            classes={classes}
             ListboxComponent={ListboxComponent}
             renderGroup={renderGroup}
             onChange={(e,newHeadword) => {
