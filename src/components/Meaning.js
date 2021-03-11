@@ -47,22 +47,17 @@ export default function Meaning(props) {
     // If the object is a submeaning, more is needed.
     else if(unknownObj.type === 'submeaning') {
       let submeaning = unknownObj;
-      let prefix = [{type: 'prefix', text: submeaning.head + ' '}];
       if(submeaning.data[0].type === 'textArray') {
-        let newTextArray = prefix.concat(submeaning.data[0].data);
-        let newTextArrayObj = {type: 'textarray', data: newTextArray};
-        secondaryText.push(<TextArray textArrayObj={newTextArrayObj} variant={props.typoClass} typoClass={classes.nested} />);
+        secondaryText.push(
+          <div>
+            <Typography key={nanoid()} variant='body2' className={classes.headnumber}>{submeaning.head}</Typography>
+            <TextArray textArrayObj={submeaning.data[0]} variant={props.typoClass} typoClass={classes.nested} />
+          </div>
+        );
       }
       else if(submeaning.data[0].type === 'subsubmeaning') {
         let ssmItem = submeaning.data[0];
-        let ssmItemPrefix = [{type: 'prefix', text: ssmItem.head + ' '}];
-
-        let newTextArray = prefix.concat(ssmItemPrefix, ssmItem.data[0].data);
-        let newTextArrayObj = {type: 'textarray', data: newTextArray};
-        console.log(ssmItem);
-        console.log(newTextArray);
-        console.log(newTextArrayObj);
-        secondaryText.push(<TextArray textArrayObj={newTextArrayObj} variant={props.typoClass} typoClass={classes.nested} />);
+        secondaryText.push(<TextArray textArrayObj={ssmItem.data[0]} variant={props.typoClass} typoClass={classes.nested} />);
         for(let i=1; i< ssmItem.data.length; i++) {
           secondaryText.push(<TextArray textArrayObj={ssmItem.data[i]} variant={props.typoClass} typoClass={classes.nested} />);
         }        
