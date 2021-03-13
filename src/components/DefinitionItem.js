@@ -39,10 +39,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DefinitionItem(props) {
   const classes = useStyles();
-  const defStyle = clsx('classes.listitem', {
-    'classes.nested' : props.nesting===1,
-    'classes.doubleNested' : props.nesting===2
-  });
+  const shouldNest1 = props.nesting===1;
+  const shouldNest2 = props.nesting===2;
+  const defStyle = clsx(classes.listitem, {[classes.doubleNested] : shouldNest2, [classes.nested] : shouldNest1});
+  console.log(defStyle);
+  console.log(props.head + ' ' + props.nesting + ' ' + shouldNest1 + ' ' + shouldNest2);
 
   return(
     <ListItem 
