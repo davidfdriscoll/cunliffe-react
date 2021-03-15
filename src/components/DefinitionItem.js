@@ -19,26 +19,25 @@ import ListItem from '@material-ui/core/ListItem';
 // and returns a ListItem
 
 const useStyles = makeStyles((theme) => ({
-    listitem: {
-      paddingTop: 0,
-      paddingBottom: 0,
-      marginTop: 0,
-      marginBottom: 0,
-      flexGrow: 1,
-    },
-    headnumber: {
-      // hacky, imperfect attempt to align number;
-      // consider alternative approach at https://stackoverflow.com/questions/61954501/material-ui-grid-baseline-alignment-for-button-buttongroup-and-typography
-      minWidth: "1em",
-    }
-  }));
+  listitem: {
+    paddingTop: 0,
+    paddingBottom: 0,
+    marginTop: 0,
+    marginBottom: 0,
+    flexGrow: 1,
+    alignItems: 'flex-start', // ListItem prop "align-items='flex-start'" does not work for some reason 
+  },
+  headnumber: {
+    minWidth: "1em",
+  }
+}));
 
 export default function DefinitionItem(props) {
   const classes = useStyles();
 
   function renderHead(head) {
     return (
-      <Typography key={nanoid()} variant='subtitle2' className={classes.headnumber}>
+      <Typography container key={nanoid()} variant='body1' className={classes.headnumber}>
         {head}
       </Typography>
     );
@@ -52,7 +51,7 @@ export default function DefinitionItem(props) {
 
   return(
     <ListItem 
-      align-items="flex-start" 
+      disableGutters
       className={classes.listitem}
     >
       {renderMeaningHead}
