@@ -8,7 +8,9 @@ import { nanoid } from "nanoid";
 export default function Definition(props) {
   return(
     <List key={nanoid()}>
-      {props.definitionObj.data.map(meaningObj => <Meaning key={nanoid()} meaningObj={meaningObj} typoClass="body1" />)}
+      {props.definitionObj.data.map(meaningObj => 
+        <Meaning key={nanoid()} meaningObj={meaningObj} typoClass="body1" />)
+      }
     </List>
   );
 }

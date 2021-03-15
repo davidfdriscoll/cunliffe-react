@@ -2,18 +2,34 @@ import React from "react";
 import { nanoid } from "nanoid";
 import DefinitionItem from "./DefinitionItem";
 
-// Renders subsubmeaning based on props submeaningHead & subSubmeaningObj
+// Renders subsubmeaning based on props meaningHead, submeaningHead & subSubmeaningObj
 // <SubSubmeaning key={nanoid()} submeaningHead={head} subSubmeaningObj={meaningData} />
 
 export default function SubSubmeaning(props) {
   let subSubmeaningRender = [];
 
   props.subSubmeaningObj.data.forEach(function(subSubmeaningData, index) {
-    let head = "";
-    if(index===0) head = props.submeaningHead + ' ' + props.subSubmeaningObj.head;
+    let meaningHead = " ";
+    let submeaningHead = " ";
+    let head = " ";
+    let indentSecond = " ";
+    if(index===0) {
+      head = props.subSubmeaningObj.head;
+      meaningHead = props.meaningHead;
+      submeaningHead = props.submeaningHead;
+      indentSecond = "";
+    }
 
     if(subSubmeaningData.type === 'textArray') {
-      subSubmeaningRender.push(<DefinitionItem key={nanoid()} head={head} textArrayObj={subSubmeaningData} nesting={2} />);
+      subSubmeaningRender.push(<DefinitionItem 
+        key={nanoid()} 
+        meaningHead={meaningHead}
+        submeaningHead={submeaningHead} 
+        subSubmeaningHead={head} 
+        indentSubSubmeaning={indentSecond}
+        textArrayObj={subSubmeaningData} 
+        nesting={2} 
+      />);
     }
     else {
       console.log("Non textarray data in subsubmeaning");

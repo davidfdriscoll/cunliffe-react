@@ -9,14 +9,28 @@ export default function Meaning(props) {
   let meaningRender = [];
 
   props.meaningObj.data.forEach(function(meaningData, index) {
-    let head = "";
-    if(index===0) head = props.meaningObj.head;
+    let head = " ";
+    let indentSecond = " ";
+    if(index===0) {
+      head = props.meaningObj.head;
+      indentSecond = "";
+    }
 
     if(meaningData.type === 'textArray') {
-      meaningRender.push(<DefinitionItem key={nanoid()} head={head} textArrayObj={meaningData} nesting={index===0 ? 0 : 1} />);
+      meaningRender.push(<DefinitionItem 
+        key={nanoid()} 
+        meaningHead={head} 
+        submeaningHead={indentSecond}
+        textArrayObj={meaningData} 
+        nesting={index===0 ? 0 : 1} 
+      />);
     }
     else if(meaningData.type === 'submeaning') {
-      meaningRender.push(<Submeaning key={nanoid()} meaningHead={head} submeaningObj={meaningData} />);
+      meaningRender.push(<Submeaning 
+        key={nanoid()} 
+        meaningHead={head} 
+        submeaningObj={meaningData} 
+      />);
     } 
   });
 

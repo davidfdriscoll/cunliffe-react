@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { nanoid } from "nanoid";
-import clsx from 'clsx';
 import TextArray from './TextArray';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
@@ -11,49 +10,56 @@ import ListItem from '@material-ui/core/ListItem';
 // and displays it in a Box (flex) with text
 
 // It receives as props:
-// head (string) (e.g. I, 1, a)
+// meaningHead (string) (e.g. 1, 2, 3, " ")
+// submeaningHead (string) (e.g. a, b, c)
+// subSubmeaningHead (string) (e.g. α, β, γ)
 // text (TextArrayObj)
-// nesting (integer level of nesting)
+// if head is " ", the components nests at that level
 
-// and returns a Box
+// and returns a ListItem
 
 const useStyles = makeStyles((theme) => ({
-    nested: {
-      paddingLeft: theme.spacing(4),
-    },
-    doubleNested: {
-      paddingLeft: theme.spacing(8),
-    },
     listitem: {
       paddingTop: 0,
-      paddingBottom: 0
+      paddingBottom: 0,
+      marginTop: 0,
+      marginBottom: 0,
+      flexGrow: 1,
     },
     headnumber: {
       // hacky, imperfect attempt to align number;
       // consider alternative approach at https://stackoverflow.com/questions/61954501/material-ui-grid-baseline-alignment-for-button-buttongroup-and-typography
-      paddingTop: theme.spacing(.9),
-      paddingRight: theme.spacing(.75),
-      flexShrink: 0,
+      minWidth: "1em",
     }
   }));
 
 export default function DefinitionItem(props) {
   const classes = useStyles();
-  const shouldNest1 = props.nesting===1;
-  const shouldNest2 = props.nesting===2;
-  const defStyle = clsx(classes.listitem, {[classes.doubleNested] : shouldNest2, [classes.nested] : shouldNest1});
-  console.log(defStyle);
-  console.log(props.head + ' ' + props.nesting + ' ' + shouldNest1 + ' ' + shouldNest2);
+
+  function renderHead(head) {
+    return (
+      <Typography key={nanoid()} variant='subtitle2' className={classes.headnumber}>
+        {head}
+      </Typography>
+    );
+  }
+  let renderMeaningHead, renderSubmeaningHead, renderSubSubmeaninghead, renderIndentSubSubmeaning;
+
+  if(props.meaningHead) renderMeaningHead = renderHead(props.meaningHead);
+  if(props.submeaningHead) renderSubmeaningHead = renderHead(props.submeaningHead);
+  if(props.subSubmeaningHead) renderSubSubmeaninghead = renderHead(props.subSubmeaningHead);
+  if(props.indentSubSubmeaning) renderIndentSubSubmeaning = renderHead(props.indentSubSubmeaning);
 
   return(
     <ListItem 
       align-items="flex-start" 
-      className={defStyle}
+      className={classes.listitem}
     >
-      <Typography key={nanoid()} variant='body2' className={classes.headnumber}>
-        {props.head}
-      </Typography>
-      <ListItemText>
+      {renderMeaningHead}
+      {renderSubmeaningHead}
+      {renderSubSubmeaninghead}
+      {renderIndentSubSubmeaning}
+      <ListItemText className={classes.listitem}>
         <TextArray textArrayObj={props.textArrayObj} variant="body1" />
       </ListItemText>
     </ListItem>

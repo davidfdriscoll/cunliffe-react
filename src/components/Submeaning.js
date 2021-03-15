@@ -9,14 +9,32 @@ export default function Submeaning(props) {
   let submeaningRender = [];
 
   props.submeaningObj.data.forEach(function(submeaningData, index) {
-    let head = "";
-    if(index===0) head = props.meaningHead + ' ' + props.submeaningObj.head;
+    let meaningHead = " ";
+    let head = " ";
+    let indentSecond = " ";
+    if(index===0) {
+      meaningHead = props.meaningHead;
+      head = props.submeaningObj.head;
+      indentSecond = "";
+    }
 
     if(submeaningData.type === 'textArray') {
-      submeaningRender.push(<DefinitionItem key={nanoid()} head={head} textArrayObj={submeaningData} nesting={index===0 ? 1 : 2} />);
+      submeaningRender.push(<DefinitionItem 
+        key={nanoid()} 
+        meaningHead={meaningHead}
+        submeaningHead={head} 
+        subSubmeaningHead={indentSecond}
+        textArrayObj={submeaningData} 
+        nesting={index===0 ? 1 : 2} 
+      />);
     }
     else if(submeaningData.type === 'subsubmeaning') {
-      submeaningRender.push(<SubSubmeaning key={nanoid()} submeaningHead={head} subSubmeaningObj={submeaningData} />);
+      submeaningRender.push(<SubSubmeaning 
+        key={nanoid()} 
+        meaningHead={meaningHead}
+        submeaningHead={head} 
+        subSubmeaningObj={submeaningData} 
+      />);
     }
   }); 
 
