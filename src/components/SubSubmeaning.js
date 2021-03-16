@@ -11,7 +11,7 @@ export default function SubSubmeaning(props) {
   props.subSubmeaningObj.data.forEach(function(subSubmeaningData, index) {
     let meaningHead = " ";
     let submeaningHead = " ";
-    let head = " ";
+    let head = subSubmeaningData.head ? subSubmeaningData.head : " ";
     let indentSecond = " ";
     if(index===0) {
       head = props.subSubmeaningObj.head;

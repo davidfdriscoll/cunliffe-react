@@ -12,6 +12,7 @@ const fontWeightDict = new Map([
   ['bibl', 'fontWeightLight'],
   ['term', 'fontWeightMedium'],
   ['small_text', 'fontWeightLight'],
+  ['formHead', 'fontWeightBold'],
 ]);
 
 const fontStyleDict = new Map([
@@ -21,6 +22,7 @@ const fontStyleDict = new Map([
   ['bibl', 'italic'],
   ['term', 'normal'],
   ['small_text', 'italic'],
+  ['formHead', 'italic'],
 ]);
 
 const fontSizeDict = new Map([
@@ -30,6 +32,7 @@ const fontSizeDict = new Map([
   ['bibl', 'caption.fontSize'],
   ['term', 'fontSize'],
   ['small_text', 'caption.fontSize'],
+  ['formHead', 'fontSize'],
 ]);
 
 export default function TextArray(props) {

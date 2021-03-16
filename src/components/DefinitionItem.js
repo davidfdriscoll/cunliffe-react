@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
   },
   headnumber: {
     minWidth: "1em",
-    maxWidth: "max-content",
   }
 }));
 
@@ -38,7 +37,7 @@ export default function DefinitionItem(props) {
 
   function renderHead(head) {
     return (
-      <Typography container key={nanoid()} variant='body1' className={classes.headnumber}>
+      <Typography key={nanoid()} variant='body1' className={classes.headnumber}>
         {head}
       </Typography>
     );

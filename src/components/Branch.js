@@ -34,14 +34,21 @@ export default function Branch(props) {
       // render the branch itself as a ListSubheader
       if(branchData.type === 'textArray') {
         branchRender.push(
-          <ListSubheader className={classes.branchitem}>
-            <Typography className={classes.branchheader} variant="h6" display="inline">{props.branchObj.head}</Typography>
-            <TextArray textArrayObj={branchData} display="inline" />
+          <ListSubheader key={nanoid()} className={classes.branchitem}>
+            <Typography 
+              key={nanoid()} 
+              className={classes.branchheader} 
+              variant="h6" 
+              display="inline"
+            >
+              {props.branchObj.head}
+            </Typography>
+            <TextArray key={nanoid()} textArrayObj={branchData} display="inline" />
           </ListSubheader>
         );
       }
 
-      // render each component meaning as submeaning.
+      // render each component meaning as meaning.
       else if(branchData.type === 'meaning') {
         branchRender.push(<Meaning 
           key={nanoid()} 
