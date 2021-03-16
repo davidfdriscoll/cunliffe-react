@@ -38,7 +38,7 @@ export default function TextArray(props) {
       key={nanoid()} 
       variant={props.variant}
       className={props.typoClass}
-      display='block' // with component = 'span' makes display inline.
+      display={props.display ? props.display : 'block'} // with component = 'span' makes display inline.
       component={'span'} //to avoid error of <div> inside of Typography's default <p>, https://stackoverflow.com/questions/41928567/div-cannot-appear-as-a-descendant-of-p
     >
       {props.textArrayObj.data.map(textItem =>

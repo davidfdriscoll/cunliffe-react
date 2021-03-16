@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   headnumber: {
     minWidth: "1em",
+    maxWidth: "max-content",
   }
 }));
 

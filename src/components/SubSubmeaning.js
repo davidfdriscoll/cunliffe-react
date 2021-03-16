@@ -28,7 +28,6 @@ export default function SubSubmeaning(props) {
         subSubmeaningHead={head} 
         indentSubSubmeaning={indentSecond}
         textArrayObj={subSubmeaningData} 
-        nesting={2} 
       />);
     }
     else {

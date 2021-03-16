@@ -1,6 +1,6 @@
 import React from 'react';
 import List from '@material-ui/core/List';
-import Meaning from './Meaning';
+import Branch from './Branch';
 import { nanoid } from "nanoid";
 
 //render Definition list from props.definitionObj
@@ -8,8 +8,8 @@ import { nanoid } from "nanoid";
 export default function Definition(props) {
   return(
     <List key={nanoid()}>
-      {props.definitionObj.data.map(meaningObj => 
-        <Meaning key={nanoid()} meaningObj={meaningObj} typoClass="body1" />)
+      {props.definitionObj.data.map(branchObj => 
+        <Branch key={nanoid()} branchObj={branchObj} />)
       }
     </List>
   );

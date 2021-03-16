@@ -22,7 +22,6 @@ export default function Meaning(props) {
         meaningHead={head} 
         submeaningHead={indentSecond}
         textArrayObj={meaningData} 
-        nesting={index===0 ? 0 : 1} 
       />);
     }
     else if(meaningData.type === 'submeaning') {

@@ -25,7 +25,6 @@ export default function Submeaning(props) {
         submeaningHead={head} 
         subSubmeaningHead={indentSecond}
         textArrayObj={submeaningData} 
-        nesting={index===0 ? 1 : 2} 
       />);
     }
     else if(submeaningData.type === 'subsubmeaning') {
