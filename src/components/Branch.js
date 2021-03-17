@@ -50,10 +50,25 @@ export default function Branch(props) {
 
       // render each component meaning as meaning.
       else if(branchData.type === 'meaning') {
-        branchRender.push(<Meaning 
-          key={nanoid()} 
-          meaningObj={branchData} 
-        />);
+        if(index===0) {
+          branchRender.push(
+            <ListSubheader key={nanoid()} className={classes.branchitem}>
+              <Typography 
+                key={nanoid()} 
+                className={classes.branchheader} 
+                variant="h6" 
+              >
+                {props.branchObj.head}
+              </Typography>
+            </ListSubheader>
+          );
+        }
+        branchRender.push(
+          <Meaning 
+            key={nanoid()} 
+            meaningObj={branchData} 
+          />
+        );
       } 
       else {
         console.log("Something else in branch!");
