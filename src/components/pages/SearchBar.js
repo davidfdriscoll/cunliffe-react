@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography"
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { createFilterOptions } from '@material-ui/lab/Autocomplete';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { VariableSizeList } from 'react-window';
 import ListSubheader from '@material-ui/core/ListSubheader';
@@ -140,7 +141,8 @@ export default function SearchBar(props) {
 
   function handleSubmit(e, newWord) {
     e.preventDefault();
-    props.onHeadword(newWord);
+    if(newWord) props.onHeadword(newWord.headword);
+    else props.onHeadword(null);
   }
 
   return (
@@ -157,7 +159,14 @@ export default function SearchBar(props) {
 
           <Autocomplete
             id="combo-box"
+            // https://stackoverflow.com/questions/63437242/search-by-name-or-id-with-material-ui-autocomplete
+            // matching on either Greek headword or transliteration
+            // objects in props.words have two items, headword and headwordMatch (string of Greek headword + transliteration)
             options={props.words}
+            getOptionLabel={({headword}) => headword}
+            filterOptions={createFilterOptions({
+              stringify: option => option.headwordMatch,
+            })}
             disableListWrap
             ListboxComponent={ListboxComponent}
             renderGroup={renderGroup}

@@ -6,7 +6,10 @@ import DefinitionDisplay from "./components/pages/DefinitionDisplay";
 import SearchBar from "./components/pages/SearchBar";
 import cunliffeLexicon from "./cunliffe.json";
 
-const headwords = cunliffeLexicon.map(word => word.headword);
+const headwords = cunliffeLexicon.map(word => {
+  return {'headword': word.headword,
+  'headwordMatch': word.headword + ' ' + word.transliteration};
+});
 
 const theme = createMuiTheme({
   palette: {
