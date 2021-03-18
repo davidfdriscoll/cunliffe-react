@@ -141,8 +141,7 @@ export default function SearchBar(props) {
 
   function handleSubmit(e, newWord) {
     e.preventDefault();
-    if(newWord) props.onHeadword(newWord.headword);
-    else props.onHeadword(null);
+    props.onHeadword(newWord?.headword);
   }
 
   return (
