@@ -1,6 +1,6 @@
 import React from "react";
 import { nanoid } from "nanoid";
-import DefinitionItem from "./DefinitionItem";
+import DefinitionItem from "../atoms/DefinitionItem";
 
 // Renders subsubmeaning based on props meaningHead, submeaningHead & subSubmeaningObj
 // <SubSubmeaning key={nanoid()} submeaningHead={head} subSubmeaningObj={meaningData} />

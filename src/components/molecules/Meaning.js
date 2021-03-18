@@ -1,7 +1,7 @@
 import React from "react";
 import { nanoid } from "nanoid";
-import DefinitionItem from "./DefinitionItem";
-import Submeaning from "./Submeaning";
+import DefinitionItem from "../atoms/DefinitionItem";
+import Submeaning from "../molecules/Submeaning";
 
 // renders Meaning (div of ListItems) based on props props.meaningObj and props.typoClass
 

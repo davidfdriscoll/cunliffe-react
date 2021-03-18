@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
-import DefinitionDisplay from "./components/DefinitionDisplay";
-import SearchBar from "./components/SearchBar";
+import DefinitionDisplay from "./components/pages/DefinitionDisplay";
+import SearchBar from "./components/pages/SearchBar";
 import cunliffeLexicon from "./cunliffe.json";
 
 const headwords = cunliffeLexicon.map(word => word.headword);

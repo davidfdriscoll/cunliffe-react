@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { nanoid } from "nanoid";
 import ListSubheader from "@material-ui/core/ListSubheader";
 import Typography from "@material-ui/core/Typography";
-import Meaning from "./Meaning";
-import TextArray from "./TextArray";
+import Meaning from "../molecules/Meaning";
+import TextArray from '../atoms/TextArray';
 
 // renders Branch based on props props.branchObj
 
@@ -32,6 +32,7 @@ export default function Branch(props) {
     props.branchObj.data.forEach(function(branchData, index) {
 
       // render the branch itself as a ListSubheader
+      // these two renders of the ListSubHeader could be unified
       if(branchData.type === 'textArray') {
         branchRender.push(
           <ListSubheader key={nanoid()} className={classes.branchitem}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import List from '@material-ui/core/List';
-import Branch from './Branch';
+import Branch from '../molecules/Branch';
 import { nanoid } from "nanoid";
 
 //render Definition list from props.definitionObj
