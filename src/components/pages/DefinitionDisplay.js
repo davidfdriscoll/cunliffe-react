@@ -31,7 +31,7 @@ export default function DefinitionDisplay(props) {
 
   return (
     <Paper className={classes.paper}>
-      <Typography variant="h5">{word.headword}</Typography>
+      <Typography variant="h5">{word.displayHeadword}</Typography>
       {word.etym.map(etym => <TextArray key={nanoid()} textArrayObj={etym} variant="body1" />)}
       {word.forms.map(form => <TextArray key={nanoid()} textArrayObj={form} variant="body2" />)}
       <Divider />

@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-start', // ListItem prop "align-items='flex-start'" does not work for some reason 
   },
   headnumber: {
-    minWidth: "1em",
+    minWidth: "1.4em",
   }
 }));
 
