@@ -38,6 +38,9 @@ class App extends Component {
                 <Route exact path="/">
                   <Redirect to="/ἆ" />
                 </Route>
+                <Route exact path="/undefined">
+                  <Redirect to="/ἆ" />
+                </Route>
                 <Route path="/:URLWord">
                   <DefinitionDisplay />
                 </Route>
