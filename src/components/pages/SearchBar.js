@@ -1,5 +1,9 @@
 import React from "react";
+
 import PropTypes from 'prop-types';
+
+import { useHistory } from 'react-router-dom';
+
 import { fade, useTheme, makeStyles } from '@material-ui/core/styles';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar"
@@ -9,8 +13,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { createFilterOptions } from '@material-ui/lab/Autocomplete';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { VariableSizeList } from 'react-window';
 import ListSubheader from '@material-ui/core/ListSubheader';
+
+import { VariableSizeList } from 'react-window';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -138,10 +143,11 @@ const renderGroup = (params) => [
 
 export default function SearchBar(props) {
   const classes = useStyles();
+  const history = useHistory();
 
   function handleSubmit(e, newWord) {
     e.preventDefault();
-    props.onHeadword(newWord?.headword);
+    history.push('/' + newWord?.headword);
   }
 
   return (

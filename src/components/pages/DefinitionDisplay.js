@@ -1,11 +1,17 @@
 import React from "react";
 import { nanoid } from "nanoid";
+
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+
+import { useParams } from 'react-router-dom';
+
 import TextArray from "../atoms/TextArray";
 import Definition from "./Definition";
+
+import cunliffeLexicon from "../../cunliffe.json";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -20,13 +26,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DefinitionDisplay(props) {
   const classes = useStyles();
+  const {URLWord} = useParams();
+  let word = cunliffeLexicon.filter(newWords => newWords.headword === URLWord)[0];
+
   return (
     <Paper className={classes.paper}>
-      <Typography variant="h5">{props.word.headword}</Typography>
-      {props.word.etym.map(etym => <TextArray key={nanoid()} textArrayObj={etym} variant="body1" />)}
-      {props.word.forms.map(form => <TextArray key={nanoid()} textArrayObj={form} variant="body2" />)}
+      <Typography variant="h5">{word.headword}</Typography>
+      {word.etym.map(etym => <TextArray key={nanoid()} textArrayObj={etym} variant="body1" />)}
+      {word.forms.map(form => <TextArray key={nanoid()} textArrayObj={form} variant="body2" />)}
       <Divider />
-      <Definition definitionObj={props.word.defs} />
+      <Definition definitionObj={word.defs} />
     </Paper>
   );
 }
