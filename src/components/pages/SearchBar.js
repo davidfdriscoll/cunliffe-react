@@ -178,6 +178,7 @@ export default function SearchBar(props) {
             onChange={(e,newHeadword) => {
               handleSubmit(e, newHeadword);
             }}
+            disabled={props.isLoading}
             renderInput={(params) => (
               <InputBase
                 ref={params.InputProps.ref}
