@@ -9,15 +9,24 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import InputBase from '@material-ui/core/InputBase';
+import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { createFilterOptions } from '@material-ui/lab/Autocomplete';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ListSubheader from '@material-ui/core/ListSubheader';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+
+import AboutDialog from '../../components/atoms/AboutDialog';
 
 import { VariableSizeList } from 'react-window';
 
 const useStyles = makeStyles((theme) => ({
+  iconButton: {
+    [theme.breakpoints.up('sm')]: {
+      marginRight: theme.spacing(2),
+    },  
+  },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -143,18 +152,32 @@ const renderGroup = (params) => [
 
 export default function SearchBar(props) {
   const classes = useStyles();
-  const history = useHistory();
+  const routerHistory = useHistory();
 
   function handleSubmit(e, newWord) {
     e.preventDefault();
-    history.push('/' + newWord?.headword);
+    routerHistory.push('/' + newWord?.headword);
+  }
+
+  const [aboutDialogOpen, setAboutDialogOpen] = React.useState(false);
+
+  function handleIconPress() {
+    setAboutDialogOpen(true);
+  }
+
+  function handleAboutDialogClose() {
+    setAboutDialogOpen(false);
   }
 
   return (
     <AppBar position="sticky">
       <Toolbar>
+
+        <IconButton onClick={handleIconPress} edge="start" className={classes.iconButton} color="inherit" aria-label="museum">
+            <MenuBookIcon />
+        </IconButton>
         
-        <Typography variant="h6">Cunliffe</Typography>
+        <Typography variant="h6">Epic Greek Dictionary</Typography>
 
         <div className={classes.search}>
 
@@ -194,6 +217,10 @@ export default function SearchBar(props) {
 
         </div>
       </Toolbar>
+      <AboutDialog 
+        open={aboutDialogOpen} 
+        handleAboutDialogClose={handleAboutDialogClose} 
+      />
     </AppBar>
   );
 }
