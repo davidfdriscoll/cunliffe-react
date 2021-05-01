@@ -15,9 +15,11 @@ export default function AboutDialog(props) {
       open={props.open}
     >
       <DialogTitle>
-        <Typography align="center" variant="h5">
-          The Epic Greek Dictionary App
-        </Typography>
+        <div>
+          <Typography align="center" variant="h5" gutterBottom>
+            The Epic Greek Dictionary App
+          </Typography>
+        </div>
       </DialogTitle>
       <DialogContent dividers>
         <Typography align="center" gutterBottom>
