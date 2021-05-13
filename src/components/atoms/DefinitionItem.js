@@ -7,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 
 // this component takes an arbitrary part of a definition (branch, meaning, submeaning)
-// and displays it in a Box (flex) with text
+// and displays it as a ListItem
 
 // It receives as props:
 // meaningHead (string) (e.g. 1, 2, 3, " ")
@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 0,
     marginBottom: 0,
     flexGrow: 1,
-    alignItems: 'flex-start', // ListItem prop "align-items='flex-start'" does not work for some reason 
   },
   headnumber: {
     minWidth: "1.4em",
@@ -53,6 +52,7 @@ export default function DefinitionItem(props) {
     <ListItem 
       disableGutters
       className={classes.listitem}
+      alignItems="flex-start"
     >
       {renderMeaningHead}
       {renderSubmeaningHead}
