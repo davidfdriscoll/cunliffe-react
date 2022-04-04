@@ -3,14 +3,14 @@ import axios from 'axios';
 
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 
 import DefinitionDisplay from "./components/pages/DefinitionDisplay";
 import SearchBar from "./components/pages/SearchBar";
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       light: '#bcbcbc',
@@ -22,13 +22,12 @@ const theme = createMuiTheme({
 
 function App() {
   const [cunliffeLexicon, setCunliffeLexicon] = React.useState();
-  const [headwords, setHeadwords] = React.useState();
+  const [headwords, setHeadwords] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     async function fetchCunliffe() {
       const cunRes = await axios.get("https://cunliffe.s3.amazonaws.com/cunliffe.json");
-      console.log(cunRes);
       setCunliffeLexicon(cunRes.data);
       setHeadwords(cunRes.data.map(word => {
         return {'headword': word.headword,

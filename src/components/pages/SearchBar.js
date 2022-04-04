@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { useHistory } from 'react-router-dom';
 
-import { fade, useTheme, makeStyles } from '@material-ui/core/styles';
+import { alpha, useTheme, makeStyles } from '@material-ui/core/styles';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
@@ -30,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.black, 0.15),
+    backgroundColor: alpha(theme.palette.common.black, 0.15),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.black, 0.25),
+      backgroundColor: alpha(theme.palette.common.black, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: theme.spacing(3),

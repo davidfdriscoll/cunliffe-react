@@ -45,7 +45,7 @@ export default function DefinitionDisplay(props) {
   return (
     props.isLoading 
       ? 
-        <Paper className={classes.loadingPaper} alignItems="center">
+        <Paper className={classes.loadingPaper}>
           <CircularProgress className={classes.loadingIcon} />
         </Paper>
       :
