@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
@@ -8,8 +9,6 @@ import Container from '@material-ui/core/Container';
 
 import DefinitionDisplay from "./components/pages/DefinitionDisplay";
 import SearchBar from "./components/pages/SearchBar";
-
-import cunliffeLexicon from "./cunliffe.json";
 
 const theme = createMuiTheme({
   palette: {
@@ -21,17 +20,32 @@ const theme = createMuiTheme({
   }
 });
 
-const headwords = cunliffeLexicon.map(word => {
-  return {'headword': word.headword,
-  'headwordMatch': word.headword + ' ' + word.transliteration};
-});
-
 function App() {
+  const [cunliffeLexicon, setCunliffeLexicon] = React.useState();
+  const [headwords, setHeadwords] = React.useState();
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    async function fetchCunliffe() {
+      const cunRes = await axios.get("https://cunliffe.s3.amazonaws.com/cunliffe.json");
+      console.log(cunRes);
+      setCunliffeLexicon(cunRes.data);
+      setHeadwords(cunRes.data.map(word => {
+        return {'headword': word.headword,
+        'headwordMatch': word.headword + ' ' + word.transliteration};
+      }));
+      setIsLoading(false);
+    }
+
+    fetchCunliffe();
+   }, []);
+
+
   return(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
-        <SearchBar words={headwords} /> 
+        <SearchBar words={headwords} isLoading={isLoading} /> 
         <Container disableGutters maxWidth="md">
           <Switch>
             <Route exact path="/">
@@ -41,7 +55,7 @@ function App() {
               <Redirect to="/ἆ" />
             </Route>
             <Route path="/:URLWord">
-              <DefinitionDisplay cunliffeLexicon={cunliffeLexicon} />
+              <DefinitionDisplay cunliffeLexicon={cunliffeLexicon} isLoading={isLoading} />
             </Route>
           </Switch>
         </Container>
