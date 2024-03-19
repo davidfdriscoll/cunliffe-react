@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -30,20 +30,22 @@ function App() {
       const cunRes = await axios.get("https://cunliffe.s3.amazonaws.com/cunliffe.json");
       setCunliffeLexicon(cunRes.data);
       setHeadwords(cunRes.data.map(word => {
-        return {'headword': word.headword,
-        'headwordMatch': word.headword + ' ' + word.transliteration};
+        return {
+          'headword': word.headword,
+          'headwordMatch': word.headword + ' ' + word.transliteration
+        };
       }));
       setIsLoading(false);
     }
 
     fetchCunliffe();
-   }, []);
+  }, [cunliffeLexicon, headwords, isLoading]);
 
 
-  return(
+  return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter>
+      <HashRouter>
         <SearchBar words={headwords} isLoading={isLoading} /> 
         <Container disableGutters maxWidth="md">
           <Switch>
@@ -58,7 +60,7 @@ function App() {
             </Route>
           </Switch>
         </Container>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }

@@ -39,11 +39,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function DefinitionDisplay(props) {
   const classes = useStyles();
-  const {URLWord} = useParams();
+  const { URLWord } = useParams();
   const word = props?.cunliffeLexicon?.filter(newWords => newWords.headword === URLWord)[0];
 
   return (
-    props.isLoading 
+    props.isLoading || !word
       ? 
         <Paper className={classes.loadingPaper}>
           <CircularProgress className={classes.loadingIcon} />
