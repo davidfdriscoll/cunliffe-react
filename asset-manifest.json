@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/epic-greek-dictionary/static/css/main.b3d7bf30.css",
-    "main.js": "/epic-greek-dictionary/static/js/main.5fa8cda0.js",
+    "main.js": "/epic-greek-dictionary/static/js/main.b76a909c.js",
     "static/js/787.b8c0a71d.chunk.js": "/epic-greek-dictionary/static/js/787.b8c0a71d.chunk.js",
     "index.html": "/epic-greek-dictionary/index.html",
-    "main.5fa8cda0.js.map": "/epic-greek-dictionary/static/js/main.5fa8cda0.js.map",
+    "main.b76a909c.js.map": "/epic-greek-dictionary/static/js/main.b76a909c.js.map",
     "787.b8c0a71d.chunk.js.map": "/epic-greek-dictionary/static/js/787.b8c0a71d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b3d7bf30.css",
-    "static/js/main.5fa8cda0.js"
+    "static/js/main.b76a909c.js"
   ]
 }
